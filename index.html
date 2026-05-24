@@ -159,40 +159,41 @@
 
   /* ─── LEFT ─── */
   .hero-left {
-    /* отступ слева = ширина side-label зоны (40px) */
-    padding: 60px 52px 44px 80px;
+    /* линия на left:64px (под правым краем аватара), контент отступает ещё на 24px */
+    padding: 60px 52px 44px 88px;
     display: flex;
     flex-direction: column;
     position: relative;
     background: var(--white);
-    border-right: 1px solid var(--blue-border);
+    border-right: 1px solid rgba(26,58,173,0.12);
   }
 
-  /* Вертикальная синяя полоса — от верха до низа по левому краю */
+  /* Синяя вертикальная полоса — ровно под правым краем nav-аватара (64px) */
   .hero-left::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 40px;           /* по центру зоны side-label */
+    left: 64px;
     width: 2px;
     height: 100%;
-    background: var(--blue-border);
+    background: var(--blue);
+    opacity: 0.45;
   }
 
-  /* Side label — строго по центру колонки */
+  /* Side label — посередине зазора 0..64px → left: 32px */
   .side-label {
     position: absolute;
-    left: 41px;            /* немного правее полосы */
+    left: 32px;
     top: 50%;
-    transform: translateY(-50%) rotate(-90deg) translateX(-50%);
-    transform-origin: left center;
+    transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+    transform-origin: center center;
     font-size: 10px;
     font-weight: 700;
     color: var(--blue);
     letter-spacing: 4px;
     text-transform: uppercase;
     white-space: nowrap;
-    opacity: 0.55;
+    opacity: 0.6;
     pointer-events: none;
   }
 
@@ -488,16 +489,28 @@
   @media (max-width: 960px) {
     .hero { grid-template-columns: 1fr; }
     .hero-right { height: 360px; }
-    .hero-left { padding: 40px 28px 32px 60px; }
+    .hero-left { padding: 40px 28px 32px 88px; }
     .footer-bar { grid-template-columns: 1fr 1fr; }
     .footer-legal { grid-column: 1 / -1; }
+  }
+
+  /* Вертикальный формат (телефон, планшет портретно) — фото скрыто */
+  @media (orientation: portrait) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+  }
+
+  /* Горизонтальный формат — фото показываем */
+  @media (orientation: landscape) {
+    .hero { grid-template-columns: 55% 45%; }
+    .hero-right { display: block; }
   }
 
   @media (max-width: 620px) {
     .cards-row { grid-template-columns: 1fr; }
     .card:first-child { border-right: none; border-bottom: 1px solid var(--blue-border); }
     .nav-links a:not(.active) { display: none; }
-    .hero-left { padding: 32px 20px 28px 52px; }
+    .hero-left { padding: 32px 20px 28px 88px; }
   }
 </style>
 </head>
