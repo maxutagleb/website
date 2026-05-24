@@ -504,12 +504,13 @@
   @media (max-width: 960px) {
     .hero { grid-template-columns: 1fr; }
     .hero-right { height: 360px; }
-    .hero-left { padding: 40px 28px 32px 88px; }
-    .footer-bar { grid-template-columns: 1fr 1fr; }
-    .footer-legal { grid-column: 1 / -1; }
+    .hero-left { padding: 40px 24px 32px 88px; }
+    .footer-bar { grid-template-columns: 1fr; }
+    .footer-left { flex-wrap: wrap; border-right: none; border-bottom: 1px solid var(--blue-border); }
+    .footer-right { padding: 14px 24px; }
   }
 
-  /* Вертикальный формат (телефон, планшет портретно) — фото скрыто */
+  /* Вертикальный формат — фото скрыто */
   @media (orientation: portrait) {
     .hero { grid-template-columns: 1fr; }
     .hero-right { display: none; }
@@ -522,10 +523,41 @@
   }
 
   @media (max-width: 620px) {
+    /* Убираем горизонтальный скролл */
+    body { overflow-x: hidden; }
+
+    /* Навбар — только аватар, "Маркетинг", "Аналитика", язык, кнопка */
+    .nav-links a { display: none; }
+    .nav-links a[data-mobile] { display: flex; }
+
+    /* Левая колонка — убираем полосу и надпись */
+    .hero-left {
+      padding: 32px 20px 28px 20px;
+    }
+    .hero-left::before { display: none; }
+    .side-label { display: none; }
+
+    /* Карточки — в столбик */
     .cards-row { grid-template-columns: 1fr; }
     .card:first-child { border-right: none; border-bottom: 1px solid var(--blue-border); }
-    .nav-links a:not(.active) { display: none; }
-    .hero-left { padding: 32px 20px 28px 88px; }
+
+    /* Stats block — перенос текста нормальный */
+    .stats-block p {
+      flex-wrap: wrap;
+      font-size: 13px;
+    }
+
+    /* Футер — всё в столбик */
+    .footer-bar { grid-template-columns: 1fr; }
+    .footer-left {
+      flex-wrap: wrap;
+      gap: 0;
+      border-right: none;
+      border-bottom: 1px solid var(--blue-border);
+    }
+    .footer-left .footer-cell { flex: 1 1 auto; min-width: 120px; }
+    .footer-right { padding: 14px 20px; }
+    .footer-legal { font-size: 10px; }
   }
 </style>
 </head>
@@ -541,8 +573,8 @@
 
   <div class="nav-links">
     <a href="#" class="active">По рекламе</a>
-    <a href="#">Маркетинг</a>
-    <a href="#">Аналитика</a>
+    <a href="#" data-mobile>Маркетинг</a>
+    <a href="#" data-mobile>Аналитика</a>
     <a href="#">Проекты</a>
     <a href="#">Блог</a>
   </div>
