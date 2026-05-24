@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gleb Maxuta — Маркетолог & Аналитик</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue:        #1a3aad;
+    --blue-dark:   #122a85;
+    --blue-deep:   #0d1f66;
+    --blue-light:  #2a50d0;
+    --blue-muted:  rgba(26,58,173,0.08);
+    --blue-border: rgba(26,58,173,0.18);
+    --accent:      #1a3aad;
+    --accent-hover:#122a85;
+    --black:       #0a0e1a;
+    --white:       #ffffff;
+    --text:        #1a1f2e;
+    --text-muted:  #6b7280;
+    --bg:          #f7f8fc;
+    --font: 'Montserrat', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    background: var(--white);
+    color: var(--text);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ══════════════════════════════════════
+     NAVBAR
+  ══════════════════════════════════════ */
+  nav {
+    display: flex;
+    align-items: stretch;
+    height: 64px;
+    background: var(--black);
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    box-shadow: 0 2px 20px rgba(10,14,26,0.25);
+  }
+
+  .nav-avatar {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    background: var(--blue-deep);
+  }
+
+  .nav-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  /* если нет img/1.png — показываем инициалы */
+  .nav-avatar-fallback {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: -1px;
+    background: var(--blue);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    padding: 0 8px;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.55);
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 0 18px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+    border-bottom: 2px solid transparent;
+  }
+
+  .nav-links a:hover { color: rgba(255,255,255,0.9); }
+  .nav-links a.active {
+    color: var(--white);
+    border-bottom: 2px solid var(--blue-light);
+  }
+
+  .nav-lang {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.5);
+    gap: 6px;
+    letter-spacing: 0.5px;
+    border-left: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .nav-lang a { text-decoration: none; color: rgba(255,255,255,0.5); transition: color 0.2s; }
+  .nav-lang a:hover, .nav-lang a.active-lang { color: var(--white); }
+  .nav-lang span { color: rgba(255,255,255,0.2); }
+
+  .nav-cta {
+    background: var(--blue);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 28px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s;
+    white-space: nowrap;
+    cursor: pointer;
+    border: none;
+    height: 64px;
+    letter-spacing: 0.5px;
+    font-family: var(--font);
+  }
+
+  .nav-cta:hover { background: var(--blue-light); }
+
+  .nav-cta svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: white;
+    stroke-width: 2;
+    flex-shrink: 0;
+  }
+
+  /* ══════════════════════════════════════
+     HERO LAYOUT
+  ══════════════════════════════════════ */
+  .hero {
+    display: grid;
+    grid-template-columns: 55% 45%;
+    min-height: calc(100vh - 64px - 76px);
+  }
+
+  /* ─── LEFT ─── */
+  .hero-left {
+    padding: 60px 52px 44px 80px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: var(--white);
+    border-right: 1px solid var(--blue-border);
+  }
+
+  /* Vertical side label */
+  .side-label {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--blue);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    opacity: 0.5;
+  }
+
+  /* Decorative corner accent */
+  .hero-left::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 80px;
+    background: var(--blue);
+  }
+
+  .hero-title {
+    font-size: clamp(32px, 3.6vw, 52px);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -1.5px;
+    color: var(--black);
+    margin-bottom: 32px;
+  }
+
+  .hero-title em {
+    font-style: normal;
+    color: var(--blue);
+  }
+
+  /* Stats block */
+  .stats-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 40px;
+    padding: 20px 24px;
+    background: var(--blue-muted);
+    border-left: 3px solid var(--blue);
+    border-radius: 0 8px 8px 0;
+  }
+
+  .stats-block p {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .stats-block p::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--blue);
+    flex-shrink: 0;
+  }
+
+  .stats-block p span {
+    color: var(--blue);
+    font-weight: 900;
+  }
+
+  /* Subtitle */
+  .hero-subtitle {
+    font-size: clamp(18px, 1.8vw, 23px);
+    font-weight: 800;
+    line-height: 1.3;
+    color: var(--black);
+    margin-bottom: 36px;
+    letter-spacing: -0.3px;
+  }
+
+  /* Cards */
+  .cards-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-top: auto;
+    border: 1px solid var(--blue-border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .card {
+    padding: 28px 26px 32px;
+    background: var(--white);
+    position: relative;
+    transition: background 0.25s;
+  }
+
+  .card:first-child {
+    border-right: 1px solid var(--blue-border);
+  }
+
+  .card:hover {
+    background: var(--blue-muted);
+  }
+
+  /* Subtle number watermark */
+  .card::after {
+    content: attr(data-num);
+    position: absolute;
+    bottom: 8px;
+    right: 14px;
+    font-size: 64px;
+    font-weight: 900;
+    color: rgba(26,58,173,0.05);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .card-tag {
+    display: inline-block;
+    background: var(--blue);
+    color: var(--white);
+    font-size: 9px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 3px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .card-title {
+    font-size: 16px;
+    font-weight: 900;
+    margin-bottom: 14px;
+    color: var(--black);
+    letter-spacing: -0.3px;
+  }
+
+  .card-list {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.85;
+    font-weight: 500;
+    margin-bottom: 26px;
+  }
+
+  .btn-blue {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--blue);
+    color: var(--white);
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 13px 28px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+  }
+
+  .btn-blue:hover {
+    background: var(--blue-light);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(26,58,173,0.35);
+  }
+
+  .btn-blue svg {
+    width: 13px; height: 13px;
+    fill: none; stroke: white; stroke-width: 2.5;
+    transition: transform 0.2s;
+  }
+
+  .btn-blue:hover svg { transform: translateX(3px); }
+
+  /* ─── RIGHT ─── */
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+    background: var(--blue-deep);
+  }
+
+  .hero-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  /* Gradient overlay at bottom */
+  .hero-right::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 160px;
+    background: linear-gradient(to top, rgba(13,31,102,0.6) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  /* Decorative GM letters — shown when no image */
+  .photo-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-deep) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .photo-placeholder .bg-letters {
+    position: absolute;
+    font-size: 260px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.04);
+    letter-spacing: -10px;
+    user-select: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .photo-placeholder .initials {
+    font-size: 96px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.15);
+    letter-spacing: -4px;
+    z-index: 1;
+  }
+
+  /* ══════════════════════════════════════
+     FOOTER BAR
+  ══════════════════════════════════════ */
+  .footer-bar {
+    border-top: 1px solid var(--blue-border);
+    display: grid;
+    grid-template-columns: auto 1fr 1fr 2fr;
+    min-height: 76px;
+    background: var(--white);
+  }
+
+  .footer-cell {
+    display: flex;
+    align-items: center;
+    padding: 14px 28px;
+    border-right: 1px solid var(--blue-border);
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .footer-cell:last-child { border-right: none; }
+
+  .social-icons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: 1.5px solid var(--blue-border);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--blue);
+    transition: border-color 0.2s, background 0.2s, color 0.2s;
+  }
+
+  .social-icons a:hover {
+    border-color: var(--blue);
+    background: var(--blue);
+    color: white;
+  }
+
+  .stat-block {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .stat-num {
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--blue);
+    letter-spacing: -0.5px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+
+  .footer-legal {
+    font-size: 10.5px;
+    color: #aab0c0;
+    line-height: 1.65;
+    font-weight: 400;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* ══════════════════════════════════════
+     RESPONSIVE
+  ══════════════════════════════════════ */
+  @media (max-width: 960px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { height: 360px; }
+    .hero-left { padding: 40px 28px 32px 44px; }
+    .footer-bar { grid-template-columns: 1fr 1fr; }
+    .footer-legal { grid-column: 1 / -1; }
+  }
+
+  @media (max-width: 620px) {
+    .cards-row { grid-template-columns: 1fr; }
+    .card:first-child { border-right: none; border-bottom: 1px solid var(--blue-border); }
+    .nav-links a:not(.active) { display: none; }
+    .hero-left { padding: 32px 20px 28px 36px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ NAVBAR ═══════════ -->
+<nav>
+  <div class="nav-avatar">
+    <!-- img/1.png = аватар в левом верхнем углу -->
+    <img src="img/1.png" alt="Gleb Maxuta"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="nav-avatar-fallback" style="display:none">GM</div>
+  </div>
+
+  <div class="nav-links">
+    <a href="#" class="active">По рекламе</a>
+    <a href="#">Маркетинг</a>
+    <a href="#">Аналитика</a>
+    <a href="#">Проекты</a>
+    <a href="#">Блог</a>
+  </div>
+
+  <div class="nav-lang">
+    <a href="#" class="active-lang">Ru</a>
+    <span>|</span>
+    <a href="#">Eng</a>
+  </div>
+
+  <button class="nav-cta">
+    <svg viewBox="0 0 24 24">
+      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.62 19.79 19.79 0 01.06 5.1 2 2 0 012 2.96h3a2 2 0 012 1.72c.127.96.36 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+    </svg>
+    Связаться
+  </button>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<main>
+  <section class="hero">
+
+    <!-- LEFT -->
+    <div class="hero-left">
+      <span class="side-label">Maxuta Gleb</span>
+
+      <h1 class="hero-title">
+        <em>2 190 дней</em><br>
+        в маркетинге<br>
+        и аналитике
+      </h1>
+
+      <div class="stats-block">
+        <p><span>Оборот проектов</span> — 400.000.000₽ в год</p>
+        <p><span>Бюджет</span> — $400.000 в мес</p>
+      </div>
+
+      <p class="hero-subtitle">
+        Выберите направление,<br>
+        в котором я вам интересен
+      </p>
+
+      <div class="cards-row">
+
+        <div class="card" data-num="01">
+          <span class="card-tag">Направление</span>
+          <div class="card-title">Маркетинг</div>
+          <div class="card-list">
+            ритейл-маркетинг,<br>
+            performance-маркетинг,<br>
+            digital-маркетинг,<br>
+            PPC, SEO, SMM,<br>
+            Email-маркетинг,<br>
+            контент-маркетинг,<br>
+            A/B тестирование,<br>
+            аналитика трафика<br>
+            и построение воронок продаж.<br>
+            B2B, B2C, D2C и B2G
+          </div>
+          <a href="#" class="btn-blue">
+            Подробнее
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <div class="card" data-num="02">
+          <span class="card-tag">Направление</span>
+          <div class="card-title">Маркетолог</div>
+          <div class="card-list">
+            ритейл-маркетинг,<br>
+            съёмка видео,<br>
+            монтаж видео,<br>
+            написание сценариев,<br>
+            SMM, медиа, блогинг,<br>
+            контекст и SEO
+          </div>
+          <a href="#" class="btn-blue">
+            Подробнее
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RIGHT – portrait photo -->
+    <div class="hero-right">
+      <!-- img/2.png = большое фото справа -->
+      <img src="img/2.png" alt="Gleb Maxuta portrait"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="photo-placeholder" style="display:none">
+        <span class="bg-letters">GM</span>
+        <span class="initials">GM</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════ FOOTER BAR ═══════════ -->
+  <footer class="footer-bar">
+
+    <div class="footer-cell">
+      <div class="social-icons">
+        <a href="#" title="Telegram">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.981l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.958.578z"/>
+          </svg>
+        </a>
+        <a href="#" title="LinkedIn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/>
+          </svg>
+        </a>
+        <a href="#" title="Instagram">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="2" width="20" height="20" rx="5"/>
+            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+        <a href="#" title="YouTube">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23 7s-.3-1.9-1.1-2.7c-1.1-1.1-2.3-1.1-2.8-1.2C16.2 3 12 3 12 3s-4.2 0-7.1.1c-.6.1-1.8.1-2.8 1.2C1.3 5.1 1 7 1 7S.7 9.1.7 11.3v2c0 2.1.3 4.2.3 4.2s.3 1.9 1.1 2.7c1.1 1.1 2.5 1 3.1 1.1C7.2 21.4 12 21.5 12 21.5s4.2 0 7.1-.1c.6-.1 1.7-.1 2.8-1.2.8-.8 1.1-2.7 1.1-2.7s.3-2.1.3-4.3v-2C23.3 9.1 23 7 23 7zM9.7 15.5V8l6.6 3.8-6.6 3.7z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-cell stat-block">
+      <span class="stat-num">50+</span>
+      <span class="stat-label">проектов</span>
+    </div>
+
+    <div class="footer-cell stat-block">
+      <span class="stat-num">400.000.000₽</span>
+      <span class="stat-label">оборот в год</span>
+    </div>
+
+    <div class="footer-cell footer-legal">
+      Gleb Maxuta © 2025. Маркетинг, аналитика, performance. Частная собственность, защищённая правообладателем. Копирование запрещено.
+    </div>
+
+  </footer>
+</main>
+
+</body>
+</html>
