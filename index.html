@@ -15,13 +15,10 @@
     --blue-light:  #2a50d0;
     --blue-muted:  rgba(26,58,173,0.08);
     --blue-border: rgba(26,58,173,0.18);
-    --accent:      #1a3aad;
-    --accent-hover:#122a85;
     --black:       #0a0e1a;
     --white:       #ffffff;
     --text:        #1a1f2e;
     --text-muted:  #6b7280;
-    --bg:          #f7f8fc;
     --font: 'Montserrat', sans-serif;
   }
 
@@ -35,9 +32,7 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ══════════════════════════════════════
-     NAVBAR
-  ══════════════════════════════════════ */
+  /* ══════════ NAVBAR ══════════ */
   nav {
     display: flex;
     align-items: stretch;
@@ -56,6 +51,9 @@
     overflow: hidden;
     border-right: 1px solid rgba(255,255,255,0.08);
     background: var(--blue-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .nav-avatar img {
@@ -63,19 +61,18 @@
     height: 100%;
     object-fit: cover;
     object-position: center top;
+    display: block;
   }
 
-  /* если нет img/1.png — показываем инициалы */
   .nav-avatar-fallback {
     width: 100%;
     height: 100%;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     font-size: 18px;
     font-weight: 900;
     color: var(--white);
-    letter-spacing: -1px;
     background: var(--blue);
   }
 
@@ -153,9 +150,7 @@
     flex-shrink: 0;
   }
 
-  /* ══════════════════════════════════════
-     HERO LAYOUT
-  ══════════════════════════════════════ */
+  /* ══════════ HERO ══════════ */
   .hero {
     display: grid;
     grid-template-columns: 55% 45%;
@@ -164,6 +159,7 @@
 
   /* ─── LEFT ─── */
   .hero-left {
+    /* отступ слева = ширина side-label зоны (40px) */
     padding: 60px 52px 44px 80px;
     display: flex;
     flex-direction: column;
@@ -172,30 +168,32 @@
     border-right: 1px solid var(--blue-border);
   }
 
-  /* Vertical side label */
+  /* Вертикальная синяя полоса — от верха до низа по левому краю */
+  .hero-left::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 40px;           /* по центру зоны side-label */
+    width: 2px;
+    height: 100%;
+    background: var(--blue-border);
+  }
+
+  /* Side label — строго по центру колонки */
   .side-label {
     position: absolute;
-    left: 18px;
+    left: 41px;            /* немного правее полосы */
     top: 50%;
-    transform: translateY(-50%) rotate(-90deg);
+    transform: translateY(-50%) rotate(-90deg) translateX(-50%);
+    transform-origin: left center;
     font-size: 10px;
     font-weight: 700;
     color: var(--blue);
     letter-spacing: 4px;
     text-transform: uppercase;
     white-space: nowrap;
-    opacity: 0.5;
-  }
-
-  /* Decorative corner accent */
-  .hero-left::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 3px;
-    height: 80px;
-    background: var(--blue);
+    opacity: 0.55;
+    pointer-events: none;
   }
 
   .hero-title {
@@ -248,7 +246,6 @@
     font-weight: 900;
   }
 
-  /* Subtitle */
   .hero-subtitle {
     font-size: clamp(18px, 1.8vw, 23px);
     font-weight: 800;
@@ -280,11 +277,8 @@
     border-right: 1px solid var(--blue-border);
   }
 
-  .card:hover {
-    background: var(--blue-muted);
-  }
+  .card:hover { background: var(--blue-muted); }
 
-  /* Subtle number watermark */
   .card::after {
     content: attr(data-num);
     position: absolute;
@@ -373,7 +367,6 @@
     display: block;
   }
 
-  /* Gradient overlay at bottom */
   .hero-right::after {
     content: '';
     position: absolute;
@@ -385,7 +378,6 @@
     pointer-events: none;
   }
 
-  /* Decorative GM letters — shown when no image */
   .photo-placeholder {
     width: 100%;
     height: 100%;
@@ -417,9 +409,7 @@
     z-index: 1;
   }
 
-  /* ══════════════════════════════════════
-     FOOTER BAR
-  ══════════════════════════════════════ */
+  /* ══════════ FOOTER ══════════ */
   .footer-bar {
     border-top: 1px solid var(--blue-border);
     display: grid;
@@ -494,13 +484,11 @@
     align-items: center;
   }
 
-  /* ══════════════════════════════════════
-     RESPONSIVE
-  ══════════════════════════════════════ */
+  /* ══════════ RESPONSIVE ══════════ */
   @media (max-width: 960px) {
     .hero { grid-template-columns: 1fr; }
     .hero-right { height: 360px; }
-    .hero-left { padding: 40px 28px 32px 44px; }
+    .hero-left { padding: 40px 28px 32px 60px; }
     .footer-bar { grid-template-columns: 1fr 1fr; }
     .footer-legal { grid-column: 1 / -1; }
   }
@@ -509,7 +497,7 @@
     .cards-row { grid-template-columns: 1fr; }
     .card:first-child { border-right: none; border-bottom: 1px solid var(--blue-border); }
     .nav-links a:not(.active) { display: none; }
-    .hero-left { padding: 32px 20px 28px 36px; }
+    .hero-left { padding: 32px 20px 28px 52px; }
   }
 </style>
 </head>
@@ -518,10 +506,9 @@
 <!-- ═══════════ NAVBAR ═══════════ -->
 <nav>
   <div class="nav-avatar">
-    <!-- img/1.png = аватар в левом верхнем углу -->
-    <img src="img/1.1png" alt="Gleb Maxuta"
-         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-    <div class="nav-avatar-fallback" style="display:none">GM</div>
+    <img src="img/1.1.png" alt="Gleb Maxuta"
+         onerror="this.style.display='none'; this.parentElement.querySelector('.nav-avatar-fallback').style.display='flex';">
+    <div class="nav-avatar-fallback">GM</div>
   </div>
 
   <div class="nav-links">
@@ -595,14 +582,18 @@
 
         <div class="card" data-num="02">
           <span class="card-tag">Направление</span>
-          <div class="card-title">Маркетолог</div>
+          <div class="card-title">Аналитика</div>
           <div class="card-list">
-            ритейл-маркетинг,<br>
-            съёмка видео,<br>
-            монтаж видео,<br>
-            написание сценариев,<br>
-            SMM, медиа, блогинг,<br>
-            контекст и SEO
+            бизнес-аналитика,<br>
+            финансовый анализ,<br>
+            data-анализ,<br>
+            SQL, Excel, Power BI,<br>
+            Tableau, Python,<br>
+            A/B тестирование,<br>
+            unit-экономика<br>
+            и построение отчётности.<br>
+            B2B, B2C, e-commerce<br>
+            и стартапы
           </div>
           <a href="#" class="btn-blue">
             Подробнее
@@ -613,9 +604,8 @@
       </div>
     </div>
 
-    <!-- RIGHT – portrait photo -->
+    <!-- RIGHT -->
     <div class="hero-right">
-      <!-- img/2.png = большое фото справа -->
       <img src="img/1.2.png" alt="Gleb Maxuta portrait"
            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
       <div class="photo-placeholder" style="display:none">
