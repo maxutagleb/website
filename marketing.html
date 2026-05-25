@@ -36,6 +36,7 @@
     width: 64px; height: 64px; flex-shrink: 0; overflow: hidden;
     border-right: 1px solid rgba(255,255,255,0.08);
     background: var(--blue-deep); display: flex; align-items: center; justify-content: center;
+    text-decoration: none; cursor: pointer;
   }
   .nav-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
   .nav-avatar-fallback {
@@ -323,11 +324,11 @@
 
 <!-- ══════════ NAVBAR ══════════ -->
 <nav>
-  <div class="nav-avatar">
+  <a href="index.html" class="nav-avatar">
     <img src="img/1.1.png" alt="Gleb Maxuta"
          onerror="this.style.display='none'; this.parentElement.querySelector('.nav-avatar-fallback').style.display='flex';">
     <div class="nav-avatar-fallback">GM</div>
-  </div>
+  </a>
 
   <div class="nav-links">
     <a href="index.html" data-ru="По рекламе" data-en="Advertising">По рекламе</a>
