@@ -578,23 +578,23 @@
   </div>
 
   <div class="nav-links">
-    <a href="#" class="active">По рекламе</a>
-    <a href="#" data-mobile>Маркетинг</a>
-    <a href="#" data-mobile>Аналитика</a>
-    <a href="#">Партнёрство</a>
+    <a href="#" class="active" data-ru="По рекламе" data-en="Advertising">По рекламе</a>
+    <a href="#" data-mobile data-ru="Маркетинг" data-en="Marketing">Маркетинг</a>
+    <a href="#" data-mobile data-ru="Аналитика" data-en="Analytics">Аналитика</a>
+    <a href="#" data-ru="Партнёрство" data-en="Partnership">Партнёрство</a>
   </div>
 
   <div class="nav-lang">
-    <a href="#" class="active-lang">Ru</a>
+    <a href="#" id="lang-ru" class="active-lang" onclick="setLang('ru'); return false;">Ru</a>
     <span>|</span>
-    <a href="#">Eng</a>
+    <a href="#" id="lang-en" onclick="setLang('en'); return false;">Eng</a>
   </div>
 
   <button class="nav-cta">
     <svg viewBox="0 0 24 24">
       <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.62 19.79 19.79 0 01.06 5.1 2 2 0 012 2.96h3a2 2 0 012 1.72c.127.96.36 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
     </svg>
-    Связаться
+    <span data-ru="Связаться" data-en="Contact">Связаться</span>
   </button>
 </nav>
 
@@ -607,61 +607,67 @@
       <span class="side-label">Maxuta Gleb</span>
 
       <h1 class="hero-title">
-        <em>12 848 часов</em><br>
-        в маркетинге<br>
-        и аналитике
+        <em data-ru="2 190 дней" data-en="2 190 days">2 190 дней</em><br>
+        <span data-ru="в маркетинге" data-en="in marketing">в маркетинге</span><br>
+        <span data-ru="и аналитике" data-en="and analytics">и аналитике</span>
       </h1>
 
       <div class="stats-block">
-        <p><span>Оборот проектов</span> — 400.000.000₽ в год</p>
-        <p><span>Бюджет</span> — $400.000 в мес</p>
+        <p>
+          <span data-ru="Оборот проектов" data-en="Projects turnover">Оборот проектов</span>
+          <span data-ru=" — 400.000.000₽ в год" data-en=" — ₽400,000,000 / year"> — 400.000.000₽ в год</span>
+        </p>
+        <p>
+          <span data-ru="Бюджет" data-en="Budget">Бюджет</span>
+          <span data-ru=" — $400.000 в мес" data-en=" — $400,000 / month"> — $400.000 в мес</span>
+        </p>
       </div>
 
       <p class="hero-subtitle">
-        Выберите направление,<br>
-        в котором я вам интересен
+        <span data-ru="Выберите направление," data-en="Choose the field">Выберите направление,</span><br>
+        <span data-ru="в котором я вам интересен" data-en="where I can be useful to you">в котором я вам интересен</span>
       </p>
 
       <div class="cards-row">
 
         <div class="card" data-num="01">
-          <span class="card-tag">Направление</span>
-          <div class="card-title">Маркетинг</div>
+          <span class="card-tag" data-ru="Направление" data-en="Direction">Направление</span>
+          <div class="card-title" data-ru="Маркетинг" data-en="Marketing">Маркетинг</div>
           <div class="card-list">
-            ритейл-маркетинг,<br>
-            performance-маркетинг,<br>
-            digital-маркетинг,<br>
-            PPC, SEO, SMM,<br>
-            Email-маркетинг,<br>
-            контент-маркетинг,<br>
-            A/B тестирование,<br>
-            аналитика трафика<br>
-            и построение воронок продаж.<br>
-            B2B, B2C, D2C и B2G
+            <span data-ru="ритейл-маркетинг," data-en="retail marketing,">ритейл-маркетинг,</span><br>
+            <span data-ru="performance-маркетинг," data-en="performance marketing,">performance-маркетинг,</span><br>
+            <span data-ru="digital-маркетинг," data-en="digital marketing,">digital-маркетинг,</span><br>
+            <span>PPC, SEO, SMM,</span><br>
+            <span data-ru="Email-маркетинг," data-en="Email marketing,">Email-маркетинг,</span><br>
+            <span data-ru="контент-маркетинг," data-en="content marketing,">контент-маркетинг,</span><br>
+            <span data-ru="A/B тестирование," data-en="A/B testing,">A/B тестирование,</span><br>
+            <span data-ru="аналитика трафика" data-en="traffic analytics">аналитика трафика</span><br>
+            <span data-ru="и построение воронок продаж." data-en="and sales funnel building.">и построение воронок продаж.</span><br>
+            <span>B2B, B2C, D2C &amp; B2G</span>
           </div>
           <a href="#" class="btn-blue">
-            Подробнее
+            <span data-ru="Подробнее" data-en="Learn more">Подробнее</span>
             <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
 
         <div class="card" data-num="02">
-          <span class="card-tag">Направление</span>
-          <div class="card-title">Аналитика</div>
+          <span class="card-tag" data-ru="Направление" data-en="Direction">Направление</span>
+          <div class="card-title" data-ru="Аналитика" data-en="Analytics">Аналитика</div>
           <div class="card-list">
-            бизнес-аналитика,<br>
-            финансовый анализ,<br>
-            data-анализ,<br>
-            SQL, Excel, Power BI,<br>
-            Tableau, Python,<br>
-            A/B тестирование,<br>
-            unit-экономика<br>
-            и построение отчётности.<br>
-            B2B, B2C, e-commerce<br>
-            и стартапы
+            <span data-ru="бизнес-аналитика," data-en="business analytics,">бизнес-аналитика,</span><br>
+            <span data-ru="финансовый анализ," data-en="financial analysis,">финансовый анализ,</span><br>
+            <span data-ru="data-анализ," data-en="data analysis,">data-анализ,</span><br>
+            <span>SQL, Excel, Power BI,</span><br>
+            <span>Tableau, Python,</span><br>
+            <span data-ru="A/B тестирование," data-en="A/B testing,">A/B тестирование,</span><br>
+            <span data-ru="unit-экономика" data-en="unit economics">unit-экономика</span><br>
+            <span data-ru="и построение отчётности." data-en="and reporting.">и построение отчётности.</span><br>
+            <span data-ru="B2B, B2C, e-commerce" data-en="B2B, B2C, e-commerce">B2B, B2C, e-commerce</span><br>
+            <span data-ru="и стартапы" data-en="and startups">и стартапы</span>
           </div>
           <a href="#" class="btn-blue">
-            Подробнее
+            <span data-ru="Подробнее" data-en="Learn more">Подробнее</span>
             <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
@@ -684,7 +690,6 @@
   <!-- ═══════════ FOOTER BAR ═══════════ -->
   <footer class="footer-bar">
 
-    <!-- левая половина: иконки + 2 стата (55%) -->
     <div class="footer-left">
       <div class="footer-cell">
         <div class="social-icons">
@@ -715,24 +720,53 @@
 
       <div class="footer-cell stat-block">
         <span class="stat-num">50+</span>
-        <span class="stat-label">проектов</span>
+        <span class="stat-label" data-ru="проектов" data-en="projects">проектов</span>
       </div>
 
       <div class="footer-cell stat-block" style="border-right:none">
         <span class="stat-num">400.000.000₽</span>
-        <span class="stat-label">оборот в год</span>
+        <span class="stat-label" data-ru="оборот в год" data-en="annual turnover">оборот в год</span>
       </div>
     </div>
 
-    <!-- правая половина: легал (45%) — выровнена под левый край фото -->
     <div class="footer-right">
-      <p class="footer-legal">
+      <p class="footer-legal"
+         data-ru="Gleb Maxuta © 2025. Маркетинг, аналитика, performance. Частная собственность, защищённая правообладателем. Копирование запрещено."
+         data-en="Gleb Maxuta © 2025. Marketing, analytics, performance. All rights reserved. Reproduction prohibited.">
         Gleb Maxuta © 2025. Маркетинг, аналитика, performance. Частная собственность, защищённая правообладателем. Копирование запрещено.
       </p>
     </div>
 
   </footer>
 </main>
+
+<script>
+  function setLang(lang) {
+    // Обновляем активную кнопку языка
+    document.getElementById('lang-ru').classList.toggle('active-lang', lang === 'ru');
+    document.getElementById('lang-en').classList.toggle('active-lang', lang === 'en');
+
+    // Меняем все элементы с data-ru / data-en
+    document.querySelectorAll('[data-ru][data-en]').forEach(el => {
+      // для элементов у которых текстовое содержимое (не p.footer-legal)
+      if (el.tagName === 'P' && el.dataset.ru && el.dataset.en) {
+        el.textContent = lang === 'ru' ? el.dataset.ru : el.dataset.en;
+      } else if (!el.children.length) {
+        // только текстовые узлы (span, a без вложений)
+        el.textContent = lang === 'ru' ? el.dataset.ru : el.dataset.en;
+      }
+    });
+
+    // Сохраняем выбор
+    localStorage.setItem('lang', lang);
+  }
+
+  // Восстанавливаем язык при загрузке
+  document.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem('lang');
+    if (saved && saved !== 'ru') setLang(saved);
+  });
+</script>
 
 </body>
 </html>
