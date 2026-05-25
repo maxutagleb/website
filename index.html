@@ -55,6 +55,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
   }
 
   .nav-avatar img {
@@ -571,15 +573,15 @@
 
 <!-- ═══════════ NAVBAR ═══════════ -->
 <nav>
-  <div class="nav-avatar">
+  <a href="index.html" class="nav-avatar">
     <img src="img/1.1.png" alt="Gleb Maxuta"
          onerror="this.style.display='none'; this.parentElement.querySelector('.nav-avatar-fallback').style.display='flex';">
     <div class="nav-avatar-fallback">GM</div>
-  </div>
+  </a>
 
   <div class="nav-links">
     <a href="#" class="active" data-ru="По рекламе" data-en="Advertising">По рекламе</a>
-    <a href="#" data-mobile data-ru="Маркетинг" data-en="Marketing">Маркетинг</a>
+    <a href="marketing.html" data-mobile data-ru="Маркетинг" data-en="Marketing">Маркетинг</a>
     <a href="#" data-mobile data-ru="Аналитика" data-en="Analytics">Аналитика</a>
     <a href="#" data-ru="Партнёрство" data-en="Partnership">Партнёрство</a>
   </div>
@@ -607,7 +609,7 @@
       <span class="side-label">Maxuta Gleb</span>
 
       <h1 class="hero-title">
-        <em data-ru="2 190 дней" data-en="2 190 days">2 190 дней</em><br>
+        <em data-ru="12 848 часов" data-en="12 848 hours">12 848 часов</em><br>
         <span data-ru="в маркетинге" data-en="in marketing">в маркетинге</span><br>
         <span data-ru="и аналитике" data-en="and analytics">и аналитике</span>
       </h1>
